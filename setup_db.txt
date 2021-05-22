@@ -1,0 +1,8 @@
+1,docker pull mysql/mysql-server:5.7
+2,docker run --name ecommerce_db -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_DATABASE=ecommerce -p 3306:3306 -d mysql/mysql-server:5.7 
+3,docker logs ecommerce_db 2>&1 | FindStr GENERATED   ===> L+470+1IJq,_ho5g.ZA6AqI&+r6uW6T,
+4,docker exec -it ecommerce_db mysql -uroot -p
+5,ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+6,CREATE USER 'ecommerce'@'%' IDENTIFIED BY '123456';
+7,GRANT ALL PRIVILEGES ON *.* TO 'ecommerce'@'%' WITH GRANT OPTION;
+8,SHOW GRANTS FOR 'ecommerce'@'%';
